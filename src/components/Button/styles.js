@@ -8,7 +8,7 @@ const buttonStyles = css`
   padding: 10px 20px;
   cursor: pointer;
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 700;
 
   &:hover {
     color: #ff0000;
