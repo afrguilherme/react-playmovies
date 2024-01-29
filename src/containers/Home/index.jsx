@@ -25,7 +25,7 @@ function Home() {
         data: { results },
       } = await api.get("/movie/popular")
 
-      setMovie(results[5])
+      setMovie(results[0])
     }
 
     async function getTopMovies() {
@@ -71,7 +71,7 @@ function Home() {
     <>
       {movie && (
         <Background $img={getImages(movie.backdrop_path)}>
-          <Modal />
+          <Modal movieId={movie.id} />
           <Container>
             <Info>
               <h1>{movie.title}</h1>
