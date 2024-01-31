@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 import { Container, Background, CloseButton } from "./styles"
-import { getMovie } from "../../services/getData"
 
 function Modal({ movieId, setShowModal }) {
   const [movie, setMovie] = useState()

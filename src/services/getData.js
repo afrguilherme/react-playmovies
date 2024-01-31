@@ -49,15 +49,13 @@ export async function getMovieVideos(movieId) {
     data: { results },
   } = await api.get(`/movie/${movieId}/videos`)
 
-  return results[0]
+  return results
 }
 
 export async function getMovieCredits(movieId) {
-  const {
-    data: { results },
-  } = await api.get(`/movie/{movie_id}/credits`)
+  const { data } = await api.get(`/movie/${movieId}/credits`)
 
-  return results[0]
+  return data
 }
 
 export async function getMovieSimilar(movieId) {
@@ -65,13 +63,11 @@ export async function getMovieSimilar(movieId) {
     data: { results },
   } = await api.get(`/movie/${movieId}/similar`)
 
-  return results[0]
+  return results
 }
 
 export async function getMovieById(movieId) {
-  const {
-    data: { results },
-  } = await api.get(`/movie/${movieId}`)
+  const { data } = await api.get(`/movie/${movieId}`)
 
-  return results[0]
+  return data
 }
