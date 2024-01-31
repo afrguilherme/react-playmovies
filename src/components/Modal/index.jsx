@@ -7,7 +7,7 @@ function Modal({ movieId, setShowModal }) {
 
   useEffect(() => {
     async function getMovies() {
-      setMovie(await getMovie(movieId))
+      setMovie(await getMovieVideos(movieId))
     }
     getMovies()
   }, [])

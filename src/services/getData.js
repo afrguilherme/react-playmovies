@@ -42,12 +42,36 @@ export async function getTopPeople() {
   return results
 }
 
-// Requisição de filmes específicos pelo id.
+// Requisição dados de filmes específicos pelo id.
 
-export async function getMovie(movieId) {
+export async function getMovieVideos(movieId) {
   const {
     data: { results },
   } = await api.get(`/movie/${movieId}/videos`)
+
+  return results[0]
+}
+
+export async function getMovieCredits(movieId) {
+  const {
+    data: { results },
+  } = await api.get(`/movie/{movie_id}/credits`)
+
+  return results[0]
+}
+
+export async function getMovieSimilar(movieId) {
+  const {
+    data: { results },
+  } = await api.get(`/movie/${movieId}/similar`)
+
+  return results[0]
+}
+
+export async function getMovieById(movieId) {
+  const {
+    data: { results },
+  } = await api.get(`/movie/${movieId}`)
 
   return results[0]
 }
