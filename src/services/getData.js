@@ -49,7 +49,7 @@ export async function getMovieVideos(movieId) {
     data: { results },
   } = await api.get(`/movie/${movieId}/videos`)
 
-  return results
+  return results[0]
 }
 
 export async function getMovieCredits(movieId) {

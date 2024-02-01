@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { Container, Background, CloseButton } from "./styles"
+import { getMovieVideos } from "../../services/getData"
 
 function Modal({ movieId, setShowModal }) {
   const [movie, setMovie] = useState()
@@ -10,6 +11,8 @@ function Modal({ movieId, setShowModal }) {
     }
     getMovies()
   }, [])
+
+  console.log(movieId)
 
   return (
     <Background onClick={() => setShowModal(false)}>

@@ -82,3 +82,5 @@ export const Info = styled.div`
     margin: 20px 0;
   }
 `
+
+export const Credits = styled.div``

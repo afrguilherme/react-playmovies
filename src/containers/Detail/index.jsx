@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
-import { Container, Background, Poster, Info } from "./styles"
+import { Container, Background, Poster, Info, Credits } from "./styles"
 import { getImages } from "../../utils/getImages"
 
 import {
@@ -9,6 +9,7 @@ import {
   getMovieCredits,
   getMovieSimilar,
 } from "../../services/getData"
+import SpanGenres from "../../components/SpanGenres"
 
 function Detail() {
   const { id } = useParams()
@@ -26,7 +27,6 @@ function Detail() {
         getMovieSimilar(id),
       ])
         .then(([movie, videos, credits, similar]) => {
-          console.log({ movie, videos, credits, similar })
           setMovie(movie)
           setMovieVideos(videos)
           setMovieCredits(credits)
@@ -37,6 +37,8 @@ function Detail() {
 
     getAllData()
   }, [])
+
+  console.log(movie)
 
   return (
     <>
@@ -49,9 +51,11 @@ function Detail() {
             </Poster>
             <Info>
               <h2>{movie.title}</h2>
-              <div>Gêneros</div>
+              <SpanGenres genres={movie.genres} />
               <p>{movie.overview}</p>
-              <div>Créditos</div>
+              <div>
+                <Credits credits={movieCredits} />
+              </div>
             </Info>
           </Container>
         </>
