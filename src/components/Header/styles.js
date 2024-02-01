@@ -15,6 +15,15 @@ export const Container = styled.div`
 
   img {
     width: 100px;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.9;
+    }
+
+    &:active {
+      opacity: 1;
+    }
   }
 `
 

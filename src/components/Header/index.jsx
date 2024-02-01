@@ -3,11 +3,12 @@ import Logo from "../../assets/logo.png"
 
 import { Container, Menu, Li } from "./styles"
 
-import { Link, useLocation } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 
 function Header() {
   const { pathname } = useLocation()
   const [changeBackground, setChangeBackground] = useState(false)
+  const navigate = useNavigate()
 
   window.onscroll = () => {
     if (window.pageYOffset > 200) {
@@ -19,7 +20,7 @@ function Header() {
 
   return (
     <Container $changeBackground={changeBackground}>
-      <img src={Logo} alt="header-logo" />
+      <img onClick={() => navigate("/")} src={Logo} alt="header-logo" />
       <Menu>
         <Li $isActive={pathname === "/"}>
           <Link to="/">Home</Link>
