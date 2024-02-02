@@ -10,10 +10,10 @@ to{
 `
 
 export const Background = styled.div`
-  background-image: url(${(props) => props.image});
+  background-image: url(${(props) => props.$image});
   background-size: cover;
   height: 50vh;
-  background-position: center;
+  background-position: initial;
   background-repeat: no-repeat;
   position: relative;
 
@@ -54,7 +54,7 @@ export const Poster = styled.div`
   z-index: 99;
 
   img {
-    width: 350px;
+    width: 430px;
     border-radius: 30px;
     box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
     animation: ${scale} 0.5s linear;
@@ -82,5 +82,3 @@ export const Info = styled.div`
     margin: 20px 0;
   }
 `
-
-export const Credits = styled.div``

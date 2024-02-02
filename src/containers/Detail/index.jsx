@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
-import { Container, Background, Poster, Info, Credits } from "./styles"
+import { Container, Background, Poster, Info } from "./styles"
 import { getImages } from "../../utils/getImages"
 
 import {
@@ -10,6 +10,7 @@ import {
   getMovieSimilar,
 } from "../../services/getData"
 import SpanGenres from "../../components/SpanGenres"
+import Credits from "../../components/Credits"
 
 function Detail() {
   const { id } = useParams()
@@ -38,13 +39,11 @@ function Detail() {
     getAllData()
   }, [])
 
-  console.log(movie)
-
   return (
     <>
       {movie && (
         <>
-          <Background image={getImages(movie.backdrop_path)} />
+          <Background $image={getImages(movie.backdrop_path)} />
           <Container>
             <Poster>
               <img src={getImages(movie.poster_path)} />
