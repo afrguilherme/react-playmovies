@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
-import { Container, Background, Poster, Info } from "./styles"
+import { Container, Background, Poster, Info, ContainerMovies } from "./styles"
 import { getImages } from "../../utils/getImages"
 
 import {
@@ -11,6 +11,7 @@ import {
 } from "../../services/getData"
 import SpanGenres from "../../components/SpanGenres"
 import Credits from "../../components/Credits"
+import Slider from "../../components/Slider"
 
 function Detail() {
   const { id } = useParams()
@@ -57,6 +58,23 @@ function Detail() {
               </div>
             </Info>
           </Container>
+          <ContainerMovies>
+            {movieVideos &&
+              movieVideos.map((video) => (
+                <div key={video.id}>
+                  <h4>{video.name}</h4>
+                  <iframe
+                    src={`https://www.youtube.com/embed/${video.key}`}
+                    title="Youtube Video Player"
+                    height="500px"
+                    width="100%"
+                  ></iframe>
+                </div>
+              ))}
+          </ContainerMovies>
+          {movieSimilar && (
+            <Slider info={movieSimilar} title={"Filmes Similares"} />
+          )}
         </>
       )}
     </>
