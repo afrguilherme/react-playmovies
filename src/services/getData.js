@@ -7,13 +7,21 @@ export async function getMovies() {
     data: { results },
   } = await api.get("/movie/popular")
 
-  return results[0]
+  return results
 }
 
 export async function getTopMovies() {
   const {
     data: { results },
   } = await api.get("/movie/top_rated")
+
+  return results
+}
+
+export async function getUpComingMovies() {
+  const {
+    data: { results },
+  } = await api.get("/movie/upcoming")
 
   return results
 }

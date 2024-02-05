@@ -53,16 +53,16 @@ function Home() {
   return (
     <>
       {movie && (
-        <Background $img={getImages(movie.backdrop_path)}>
+        <Background $img={getImages(movie[0].backdrop_path)}>
           {showModal && (
-            <Modal movieId={movie.id} setShowModal={setShowModal} />
+            <Modal movieId={movie[0].id} setShowModal={setShowModal} />
           )}
           <Container>
             <Info>
-              <h1>{movie.title}</h1>
-              <p>{movie.overview}</p>
+              <h1>{movie[0].title}</h1>
+              <p>{movie[0].overview}</p>
               <ContainerButtons>
-                <Button onClick={() => navigate(`/detalhe/${movie.id}`)} red>
+                <Button onClick={() => navigate(`/detalhe/${movie[0].id}`)} red>
                   Assista agora
                 </Button>
                 <Button onClick={() => setShowModal(true)}>
@@ -71,7 +71,7 @@ function Home() {
               </ContainerButtons>
             </Info>
             <Poster>
-              <img alt="capa-do-filme" src={getImages(movie.poster_path)} />
+              <img alt="capa-do-filme" src={getImages(movie[0].poster_path)} />
             </Poster>
           </Container>
         </Background>

@@ -1,18 +1,26 @@
 import { useState, useEffect } from "react"
-import { Container, Background, Info } from "./styles"
-import { getMovies, getTopMovies } from "../../services/getData"
-import { getImages } from "../../utils/getImages"
+import { useNavigate } from "react-router-dom"
+import { ContainerMovies, Container, Title } from "./styles"
+import {
+  getMovies,
+  getTopMovies,
+  getUpComingMovies,
+} from "../../services/getData"
+import Card from "../../components/Card"
 
 function Movies() {
   const [popularMovies, setPopularMovies] = useState()
   const [ratedMovies, setRatedMovies] = useState()
+  const [upComingMovies, setUpcomingMovies] = useState()
+  const navigate = useNavigate()
 
   useEffect(() => {
     async function getAllData() {
-      Promise.all([getMovies(), getTopMovies()])
-        .then(([movie, topMovies]) => {
-          setPopularMovies(movie)
+      Promise.all([getMovies(), getTopMovies(), getUpComingMovies()])
+        .then(([movies, topMovies, upComingMovies]) => {
+          setPopularMovies(movies)
           setRatedMovies(topMovies)
+          setUpcomingMovies(upComingMovies)
         })
         .catch((error) => console.error(error))
     }
@@ -22,14 +30,22 @@ function Movies() {
 
   return (
     <>
-      {ratedMovies && (
-        <Background $img={getImages(ratedMovies[0].backdrop_path)} />
-      )}
       <Container>
-        <Info>
-          <h1>{ratedMovies[0].title}</h1>
-          <p>{ratedMovies[0].overview}</p>
-        </Info>
+        <Title>Mais avaliados</Title>
+        <ContainerMovies>
+          {ratedMovies && ratedMovies.map((movie) => <Card item={movie} />)}
+        </ContainerMovies>
+
+        <Title>Em alta</Title>
+        <ContainerMovies>
+          {popularMovies && popularMovies.map((movie) => <Card item={movie} />)}
+        </ContainerMovies>
+
+        <Title>Em breve</Title>
+        <ContainerMovies>
+          {upComingMovies &&
+            upComingMovies.map((movie) => <Card item={movie} />)}
+        </ContainerMovies>
       </Container>
     </>
   )
