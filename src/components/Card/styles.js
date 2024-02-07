@@ -10,7 +10,6 @@ export const Container = styled.div`
     border-radius: 30px;
     width: 250px;
     height: 100%;
-    cursor: pointer;
   }
 
   h3 {

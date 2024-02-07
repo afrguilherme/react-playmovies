@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 export const Container = styled.div`
-  z-index: 99;
+  z-index: 999;
   position: fixed;
   top: 0;
   padding: 10px 80px 10px 20px;

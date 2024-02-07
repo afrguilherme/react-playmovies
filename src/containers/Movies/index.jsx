@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react"
-import { useNavigate } from "react-router-dom"
 import { ContainerMovies, Container, Title } from "./styles"
 import {
   getMovies,
@@ -12,7 +11,6 @@ function Movies() {
   const [popularMovies, setPopularMovies] = useState()
   const [ratedMovies, setRatedMovies] = useState()
   const [upComingMovies, setUpcomingMovies] = useState()
-  const navigate = useNavigate()
 
   useEffect(() => {
     async function getAllData() {
@@ -33,18 +31,20 @@ function Movies() {
       <Container>
         <Title>Mais avaliados</Title>
         <ContainerMovies>
-          {ratedMovies && ratedMovies.map((movie) => <Card item={movie} />)}
+          {ratedMovies &&
+            ratedMovies.map((movie) => <Card key={movie.id} item={movie} />)}
         </ContainerMovies>
 
         <Title>Em alta</Title>
         <ContainerMovies>
-          {popularMovies && popularMovies.map((movie) => <Card item={movie} />)}
+          {popularMovies &&
+            popularMovies.map((movie) => <Card key={movie.id} item={movie} />)}
         </ContainerMovies>
 
         <Title>Em breve</Title>
         <ContainerMovies>
           {upComingMovies &&
-            upComingMovies.map((movie) => <Card item={movie} />)}
+            upComingMovies.map((movie) => <Card key={movie.id} item={movie} />)}
         </ContainerMovies>
       </Container>
     </>
